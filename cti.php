@@ -1,6 +1,30 @@
 <?php
 
 require_once 'cti.civix.php';
+function cti_civicrm_buildForm( $formName, &$form ) {
+  $form = array ("CRM_Contact_Form_Search_Basic");
+  if (!in_array($formName,$form)) 
+    return;
+  CRM_Core_Region::instance('page-body')->add(array(
+    'template' => 'adial.tpl'
+  ));
+}
+
+function cti_civicrm_searchColumns( $objectName, &$headers,  &$values, &$selector ) {
+  $phoneColumn = null;
+  foreach ($headers as $v)  {
+    if ($v["name"] == "Phone"){
+       $phoneColumn = str_replace ("`", "",$v["sort"]);
+    }
+
+  }
+  if (!$phoneColumn) return;
+  foreach ($values as $k => &$v) {
+    if (!empty($v[$phoneColumn])) {
+      $v[$phoneColumn] = "<span class='crm-contact_phone'>".$v[$phoneColumn]."</span>";
+    }
+  }
+}
 
 function cti_civicrm_summary ( $contactID, &$content) {
   CRM_Core_Region::instance('page-body')->add(array(
