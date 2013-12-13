@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<extension key="eu.tttp.cti" type="module">
+  <file>cti</file>
+  <name>Make the phone number callable</name>
+  <description>transform phone numbers into a link</description>
+  <license>agpl</license>
+  <maintainer>
+    <author>xavier</author>
+    <email>civicrm@tttp.eu</email>
+  </maintainer>
+  <releaseDate>2013-12-13</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.2</ver>
+  </compatibility>
+  <civix>
+    <namespace>CRM/Cti</namespace>
+  </civix>
+</extension>
